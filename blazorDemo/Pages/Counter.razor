@@ -9,6 +9,7 @@
 @*it is possible to insert programmable content by escaping with with the @ symbol.
     In this case we are displaying the value of the counter private member.*@
 <p>The counter value is @counter</p>
+<button class="btn btn-primary" @onclick=IncrementCounter>Increment counter</button>
 
 
 
@@ -17,4 +18,9 @@
 
 
     private int counter = 42;
+
+    private void IncrementCounter()
+    {
+        counter++;
+    }
 }
