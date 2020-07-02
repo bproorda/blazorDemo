@@ -10,17 +10,34 @@
 <p>Current Count: @currentCount</p>
 <MySecondComponent CurrentCounterValue=@currentCount />
 <button class="btn btn-primary" @onclick=IncrementCounter>Increment counter</button>
+@*onclick can be a directive!*@
 
 
+@*Parameter types, note placement of @
+    Position Type    Example
+    Absent  Literal<MyComponent MyParameter=42 />
+    Right   Expression<MyComponent Value=@SomeValue />
+    Left Directive<MyComponent @Bind-Value=SomeValue />*@
 
 @*This is where we write our properties / methods, event handlers, or whatever else we need.*@
 @code {
 
 
-    private int currentCount = 42;
+    private int currentCount = 0;
 
-    private void IncrementCounter()
+    private async void IncrementCounter()
     {
         currentCount++;
+        if (currentCount % 2 == 0)
+            OnMultipleOfTwoAction?.Invoke(currentCount);
+        if (currentCount % 3 == 0)
+            await OnMultipleOfThree.InvokeAsync(currentCount);
     }
+
+
+    [Parameter]
+    public Action<int> OnMultipleOfTwoAction { get; set; }
+    [Parameter]
+    public EventCallback<int> OnMultipleOfThree { get; set; }
+    //EventCallback re-renders the view, Action does not
 }

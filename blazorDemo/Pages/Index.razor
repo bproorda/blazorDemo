@@ -2,12 +2,35 @@
 @using blazorDemo.components
 
 <h1>Hello, world!</h1>
+
+<ul>
+    <li>Last multiple of two = @LastMultipleOfTwo</li>
+    <li>Last multiple of three = @LastMultipleOfThree</li>
+</ul>
+
 @*this does require an import, listed in shared imports*@
-@*<MyFirstComponent/>*@
+<MyFirstComponent @bind-CurrentCounterValue=currentCount/>
 Welcome to your new app.
 
 @*embedding component into this page, no import required!*@
-<Counter />
+@*<Counter OnMultipleOfThree=@UpdateLastMultipleOfThreeValue
+         OnMultipleOfTwoAction=@UpdateLastMultipleOfTwoValue />*@
+@*Embeds the Counter component and sets its OnMultipleOfThree event
+    to execute the UpdateLastMultipleOfThreeValue method when the event is emitted.*@
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+    int currentCount = 0;
+    int LastMultipleOfTwo = 0;
+    int LastMultipleOfThree = 0;
+    private void UpdateLastMultipleOfThreeValue(int value)
+    {
+        LastMultipleOfThree = value;
+    }
+    private void UpdateLastMultipleOfTwoValue(int value)
+    {
+        LastMultipleOfTwo = value;
+    }
 
+
+}
