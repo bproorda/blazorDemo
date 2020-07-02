@@ -1,16 +1,20 @@
-﻿@page "/counter"
+﻿@*identifies url need to render this page.*@
+
+
+@page "/counter"
+
 
 <h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
+@*it is possible to insert programmable content by escaping with with the @ symbol.
+    In this case we are displaying the value of the counter private member.*@
+<p>The counter value is @counter</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+
+@*This is where we write our properties / methods, event handlers, or whatever else we need.*@
 @code {
-    private int currentCount = 0;
 
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
+
+    private int counter = 42;
 }
