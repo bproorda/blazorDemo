@@ -1,0 +1,15 @@
+﻿
+
+
+
+<div>
+    CurrentCounterValue in MySecondComponent is @CurrentCounterValue
+</div>
+
+
+@code {
+    //This informs Blazor we want a parameter
+    //    on our component that is settable via what looks like an HTML attribute
+    [Parameter]
+    public int CurrentCounterValue { get; set; }
+}

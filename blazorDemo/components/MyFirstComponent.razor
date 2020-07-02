@@ -1,7 +1,20 @@
-﻿<div>
-    <h2>This is my first component</h2>
+﻿
+
+
+
+<div>
+    CurrentCounterValue in MyFirstComponent is @CurrentCounterValue
 </div>
+<button class="btn btn-primary" @onclick=IncrementCounter>Increment counter</button>
+
+
 
 @code {
+    private int CurrentCounterValue = 42;
+
+    private void IncrementCounter()
+    {
+        CurrentCounterValue++;
+    }
 
 }
